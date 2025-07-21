@@ -25,7 +25,7 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/register", "/login", "/api/databases", "/api/databases/**").permitAll() // Allow access to registration and login pages
+                        .requestMatchers("/register", "/login", "/api/databases", "/api/databases/**", "/actuator/**").permitAll() // Allow access to registration and login pages
                         .requestMatchers("/admin").hasRole("ADMIN") // Restrict /admin to users with the ADMIN role
                         .requestMatchers("/viewer").hasRole("STAFF") // Restrict /viewer to users with the STAFF role
                         .anyRequest().authenticated() // Require authentication for all other endpoints
